@@ -56,3 +56,12 @@ docker compose up --build
 - 后端 API： `http://localhost:8000/api/hello/`
 
 说明：前端开发服务器在 Compose 中依赖 `web`（后端），后端已启用 CORS（开发模式）。
+
+后端启动
+conda activate webapp
+cd backend
+(webapp) C:\Users\AW\Desktop\webapp\backend>python manage.py runserver 8000
+
+前端启动
+cd frontend
+npm start

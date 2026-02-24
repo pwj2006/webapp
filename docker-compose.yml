@@ -41,7 +41,6 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - BROWSER=none
       - HOST=0.0.0.0
-      - REACT_APP_API_URL=http://web:8000
     depends_on:
       - web
 
