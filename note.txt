@@ -1,0 +1,22 @@
+后端启动 (cmd)
+
+```cmd
+conda activate webapp
+cd backend
+python manage.py runserver 8000
+```
+
+前端启动 (powershell)
+
+```powershell
+cd frontend
+npm start
+```
+
+SQLite 数据查询
+
+```powershell
+cd backend
+sqlite3 db.sqlite3
+SELECT id, username, password FROM auth_user;
+```
