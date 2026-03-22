@@ -64,3 +64,40 @@ python manage.py runserver 8000
 cd frontend
 npm start
 ```
+
+## SQLite 数据库查看
+
+默认情况下，Django 会在 `backend/db.sqlite3` 生成数据库文件。你可以用以下方式查看：
+
+方式一：Django 自带 `dbshell`
+
+```powershell
+cd backend
+python manage.py dbshell
+```
+
+进入后可执行：
+
+```sql
+.tables
+SELECT * FROM auth_user;
+```
+
+方式二：使用 sqlite3 命令行
+
+```powershell
+cd backend
+sqlite3 db.sqlite3
+```
+
+常用命令：
+
+```sql
+.tables
+.schema
+SELECT * FROM api_yourmodel LIMIT 20;
+```
+
+方式三：图形化工具（可选）
+
+推荐使用 DB Browser for SQLite 或者 TablePlus，直接打开 `backend/db.sqlite3` 查看数据。

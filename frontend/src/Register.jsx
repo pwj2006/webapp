@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import './Login.css'; // 直接复用登录界面的样式
 
-const Login = () => {
+const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
 
-    const userLogin = async (e) => {
-        // 阻止表单默认的提交刷新行为
+    const userRegister = async (e) => {
         e.preventDefault();
         
-        // 将用户信息打包成 JSON 格式
+        // 简单的密码一致性校验
+        if (password !== confirmPassword) {
+            alert('两次输入的密码不一致！');
+            return;
+        }
+
         const userInfo = {
             username: username,
             password: password
         };
 
         try {
-            // 发送数据到后端 api/login/ 地址，触发代理转发到 8000 端口
-            const response = await fetch('/api/login/', {
+            const response = await fetch('/api/register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,10 +33,11 @@ const Login = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('登录成功:', data);
-                // 后续可以在这里处理页面跳转或保存 Token 等操作
+                console.log('注册成功:', data);
+                alert('注册成功，去登录吧！');
+                navigate('/login'); // 注册成功后自动跳转回登录页面
             } else {
-                console.error('登录失败，请检查账号密码');
+                console.error('注册失败，请检查数据或用户名是否已被占用');
             }
         } catch (error) {
             console.error('请求过程中发生错误:', error);
@@ -42,9 +47,9 @@ const Login = () => {
     return (
         <div className="login-viewport">
             <div className="login-container">
-                <h1>登录界面</h1>
+                <h1>注册界面</h1>
                 
-                <form onSubmit={userLogin} className="login-form">
+                <form onSubmit={userRegister} className="login-form">
                     <input 
                         type="text" 
                         placeholder="用户名" 
@@ -59,17 +64,23 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)} 
                         required 
                     />
-                    <button type="submit" className="login-submit-btn">登录</button>
+                    <input 
+                        type="password" 
+                        placeholder="再次输入密码" 
+                        value={confirmPassword} 
+                        onChange={(e) => setConfirmPassword(e.target.value)} 
+                        required 
+                    />
+                    <button type="submit" className="login-submit-btn">注册</button>
                 </form>
 
                 <div className="login-footer">
-                    <button type="button" className="register-btn" onClick={() => navigate('/register')}>
-                        还没有账号？立即注册
-                    </button>
+                    {/* 点击返回登录页 */}
+                    <button type="button" className="register-btn" onClick={() => navigate('/login')}>已有账号？立即登录</button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default Register;
