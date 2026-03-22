@@ -1,0 +1,86 @@
+/* 让外层视口占满全屏，并设置渐变背景和居中对齐 */
+.login-viewport {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom right, rgb(161,99,149), rgb(208,81,124), rgb(211,96,110));
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 中心登录框，600x600，20px圆角 */
+.login-container {
+    width: 600px;
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.95); /* 白色背景加一点点透明度让层次更好看 */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 50px;
+    box-sizing: border-box;
+}
+
+.login-container h1 {
+    margin: 0;
+    color: #333;
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.login-form input:focus {
+    border-color: rgb(208,81,124);
+}
+
+.login-submit-btn {
+    padding: 15px;
+    font-size: 18px;
+    color: white;
+    background-color: rgb(208,81,124);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-submit-btn:hover {
+    background-color: rgb(161,99,149);
+}
+
+.register-btn {
+    background: none;
+    border: none;
+    color: rgb(161,99,149);
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 10px;
+}
+
+.register-btn:hover {
+    color: rgb(208,81,124);
+}

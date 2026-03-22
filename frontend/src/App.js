@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './Login';
 
-export default function App() {
+function Home() {
   const [msg, setMsg] = useState('Loading...');
 
   useEffect(() => {
@@ -17,5 +19,16 @@ export default function App() {
         API says: <strong>{msg}</strong>
       </p>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
