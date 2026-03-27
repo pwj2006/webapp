@@ -18,8 +18,8 @@ const Login = () => {
         };
 
         try {
-            // 发送数据到后端 api/login/ 地址，触发代理转发到 8000 端口
-            const response = await fetch('/api/login/', {
+            // 发送数据到后端 api/users/login/ 地址，触发代理转发到 8000 端口
+            const response = await fetch('/api/users/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
