@@ -30,7 +30,9 @@ const Login = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log('登录成功:', data);
-                // 后续可以在这里处理页面跳转或保存 Token 等操作
+                localStorage.setItem('token', data.token); // 保存 token
+                navigate('/'); // 跳转到主页
+
             } else {
                 console.error('登录失败，请检查账号密码');
             }

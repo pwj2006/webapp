@@ -3,7 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-
+import jwt
+from datetime import datetime, timedelta
+from django.conf import settings
 
 @api_view(["GET"])
 def hello(request):
@@ -34,6 +36,15 @@ def login_view(request):
     user = authenticate(username=username, password=password)
     
     if user is not None:
-        return Response({"message": "登录成功", "username": user.username}, status=status.HTTP_200_OK)
+        # 生成 JWT token
+        payload = {
+            'user_id': user.id,
+            'username': user.username,
+            'exp': datetime.utcnow() + timedelta(hours=24),  # Token 24小时后过期
+            'iat': datetime.utcnow()
+        }
+        # 使用 Django 的 SECRET_KEY 进行签名
+        jwt_token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
+        return Response({"message": "登录成功", "token": jwt_token}, status=status.HTTP_200_OK)
     else:
         return Response({"error": "用户名或密码错误"}, status=status.HTTP_401_UNAUTHORIZED)
