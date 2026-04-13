@@ -1,0 +1,89 @@
+.home-page {
+  padding: 24px;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.home-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.home-nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.home-button {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.home-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.home-button:hover {
+  background-color: #e8e8e8;
+}
+
+.home-button:hover::before {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+.home-user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.home-user-button {
+  font-weight: 600;
+}
+
+.home-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  width: 100%;
+  padding: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.home-user-menu:hover .home-dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-dropdown-item {
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.home-dropdown-item:hover {
+  background-color: #f0f0f0;
+}

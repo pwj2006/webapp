@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import './Home.css';
 
 function Home() {
   const [msg, setMsg] = useState('Loading...');
@@ -28,6 +29,11 @@ function Home() {
     }
   }, []);
 
+  const handleSettings = () => {
+    // 暂时为空，方便后续添加设置逻辑
+    console.log('Settings clicked');
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('token'); // 清除 token
     setUsername(null); // 清除用户名状态
@@ -36,49 +42,31 @@ function Home() {
   };
 
   return (
-    <div style={{ padding: 24, fontFamily: 'Inter, Arial, sans-serif' }}>
-      <nav style={{
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        padding: '10px',
-        borderBottom: '1px solid #ccc',
-        marginBottom: '20px'
-      }}>
+    <div className="home-page">
+      <nav className="home-nav">
         {username ? (
           <div
-            style={{ position: 'relative', display: 'inline-block' }}
+            className="home-user-menu"
             onMouseEnter={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
           >
-            <span style={{ cursor: 'pointer' }}>欢迎，{username}!</span>
+            <button type="button" className="home-button home-user-button">你好，{username}</button>
             {showDropdown && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '100%', // 位于欢迎语下方
-                  right: 0,
-                  backgroundColor: '#fff',
-                  border: '1px solid #ccc',
-                  borderRadius: '4px',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                  zIndex: 1000,
-                  minWidth: '120px',
-                  padding: '5px 0',
-                }}
-              >
-                <button
-                  onClick={handleLogout}
-                  style={{ display: 'block', width: '100%', padding: '8px 15px', border: 'none', background: 'none', textAlign: 'left', cursor: 'pointer', '&:hover': { backgroundColor: '#f0f0f0' } }}
-                >退出登录</button>
+              <div className="home-dropdown-menu">
+                <div className="home-dropdown-item" onClick={handleSettings}>
+                  设置
+                </div>
+                <div className="home-dropdown-item" onClick={handleLogout}>
+                  退出登录
+                </div>
               </div>
             )}
           </div>
         ) : (
-          <>
-            <Link to="/login" style={{ marginRight: '10px' }}>登录</Link>
-            <Link to="/register">注册</Link>
-          </>
+          <div className="home-nav-actions">
+            <button type="button" className="home-button" onClick={() => navigate('/login')}>登录</button>
+            <button type="button" className="home-button" onClick={() => navigate('/register')}>注册</button>
+          </div>
         )}
       </nav>
 
