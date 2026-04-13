@@ -87,3 +87,81 @@
 .home-dropdown-item:hover {
   background-color: #f0f0f0;
 }
+
+/* 主页正文区域设置一些内边距 */
+.home-main-content {
+  padding: 40px;
+}
+
+.api-status {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.project-controls {
+  display: flex;
+  justify-content: space-between; /* 将内部元素左右推开 */
+  align-items: center; /* 垂直居中 */
+  margin-bottom: 24px; /* 和下方的卡片网格保持间距 */
+}
+
+.create-project-btn {
+  padding: 10px 20px;
+  background-color: rgb(208,81,124);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-project-btn:hover {
+  background-color: rgb(161,99,149);
+}
+
+.search-project-input {
+  padding: 10px 15px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-project-input:focus {
+  border-color: rgb(208,81,124);
+}
+
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.project-card {
+  width: 400px;
+  height: 300px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center; /* 垂直居中文字 */
+  justify-content: center; /* 水平居中文字 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* 添加一点阴影使组件有立体感 */
+  transition: transform 0.2s, box-shadow 0.2s; /* 添加平滑的悬浮过渡动画 */
+  cursor: pointer;
+}
+
+/* 鼠标悬浮在卡片上的效果 */
+.project-card:hover {
+  transform: translateY(-5px); /* 轻微向上浮动 */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); /* 加深阴影 */
+}
+
+.project-card h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1rem;
+}
