@@ -29,12 +29,12 @@ const Login = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('登录成功:', data);
+                alert('登录成功:', data);
                 localStorage.setItem('token', data.token); // 保存 token
                 navigate('/'); // 跳转到主页
 
             } else {
-                console.error('登录失败，请检查账号密码');
+                alert('登录失败，请检查账号密码');
             }
         } catch (error) {
             console.error('请求过程中发生错误:', error);

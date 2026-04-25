@@ -52,7 +52,7 @@ docker compose up --build
 
 后端启动 (cmd)
 
-```powershell
+```cmd
 conda activate 
 cd backend
 python manage.py runserver 8000
@@ -60,7 +60,7 @@ python manage.py runserver 8000
 
 前端启动 (powershell)
 
-```
+```powershell
 cd frontend
 npm start
 ```

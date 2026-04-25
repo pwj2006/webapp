@@ -37,7 +37,7 @@ const Register = () => {
                 alert('注册成功，去登录吧！');
                 navigate('/login'); // 注册成功后自动跳转回登录页面
             } else {
-                console.error('注册失败，请检查数据或用户名是否已被占用');
+                alert('注册失败，请检查数据或用户名是否已被占用');
             }
         } catch (error) {
             console.error('请求过程中发生错误:', error);
